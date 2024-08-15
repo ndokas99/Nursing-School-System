@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+{% extends "dashboard.html" %}
+{% block main_block %}
+    <div class="formBx">
+        <h2>Enter payment details</h2>
+        <form class="form" method="POST">
+            {{ form.as_p }}
+            {% csrf_token %}
+            <div class="inputBx">
+                <input type="submit" value="Submit">
+            </div>
+        </form>
+    </div>
+{% endblock %}
+{% block script_block %}{% endblock %}

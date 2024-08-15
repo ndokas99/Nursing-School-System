@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static "css/bootstrap.min.css" %}"/>
+    <link rel="stylesheet" href="{% static "css/style-dashboard.css" %}"/>
+    <title>Dashboard</title>
+</head>
+<body>
+    <div class="container-fluid vh-100 mw-100">
+        <div class="row">
+            <header class="d-flex justify-content-center align-items-center">NURSING SCHOOL ACCOUNTING SYSTEM</header>
+            <nav class="col">
+                <a href="/record_payment">
+                    <div class="tab">Record payment</div>
+                </a>
+                <a href="/record_expenses">
+                    <div class="tab">Record expenses</div>
+                </a>
+                <a href="/display_cashbook">
+                    <div class="tab">Display cashbook</div>
+                </a>
+                <a href="/display_students">
+                    <div class="tab">Display students</div>
+                </a>
+                <input type="button" class="btn" value="Logout" onclick="location.href='/user_logout'">
+            </nav>
+            <main>
+                {% if messages %}
+                    {% for message in messages %}
+                        {% if message.tags == 'error' %}
+                            <div class="alert alert-danger alert-dismissable fade show" role="alert">
+                                {{ message }}
+                                <button type="button" class="close" data-dismiss="alert">
+                                    <span aria-hidden="true">&times</span>
+                                </button>
+                            </div>
+                        {% elif message.tags == "info" %}
+                            <div class="alert alert-info alert-dismissable fade show" role="alert">
+                                {{ message }}
+                                <button type="button" class="close" data-dismiss="alert">
+                                    <span aria-hidden="true">&times</span>
+                                </button>
+                            </div>
+                        {% else %}
+                            <div class="alert alert-success alert-dismissable fade show" role="alert">
+                                {{ message }}
+                                <button type="button" class="close" data-dismiss="alert">
+                                    <span aria-hidden="true">&times</span>
+                                </button>
+                            </div>
+                        {% endif %}
+                    {% endfor %}
+                {% endif %}
+                {% block main_block %}{% endblock %}
+            </main>
+        </div>
+    </div>
+    {% block script_block %}
+    <script src="{% static "js/jquery-3.5.1.js" %}"></script>    
+    <script src="{% static "js/bootstrap.bundle.min.js" %}"></script>
+    <script>
+        $(document).ready(
+            function (){
+                function getCookie(){
+                    let cookies = document.cookie.split(";");
+                    for (let cookie in cookies){
+                        if(cookies[cookie].split("=")[0]==="csrftoken")
+                            return cookies[cookie].split("=")[1];
+                    }
+                }
+                fetch('/download_receipt', {
+                    method: "POST",
+                    credentials: "include",
+                    body: JSON.stringify({}),
+                    cache: "no-cache",
+                    headers: new Headers({
+                        "content-type": "application/json",
+                        "X-CSRFToken": getCookie()
+                    })
+                });
+            }
+        )
+    </script>
+    {% endblock %}
+</body>
+</html>

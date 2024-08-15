@@ -1,0 +1,112 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+section{
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+}
+section .imgBx{
+    position: relative;
+    width: 50%;
+    height: 100%;
+    background: #86cfda;
+}
+
+section .imgBx::before{
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    mix-blend-mode: screen;
+}
+
+.imgBx img{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+section .contentBx{
+    width: 50%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+section .contentBx .formBx{
+    width: 60%;
+}
+section .contentBx .formBx h2{
+    color: #607d8b;
+    font-weight: 600;
+    font-size: 1.5em;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    border-bottom: 4px solid #1b5c72;
+    display: inline-block;
+    letter-spacing: 1px;
+    text-align: center;
+}
+section .contentBx .formBx .inputBx{
+    margin-bottom: 10px;
+    text-align: center;
+}
+section .contentBx .formBx .inputBx p{
+    text-align: left;
+    font-size: 16px;
+    margin-bottom: 5px;
+    display: block;
+    color: #607d8b;
+    font-weight: 300;
+    letter-spacing: 1px;
+}
+section .contentBx .formBx .inputBx input{
+    width: 100%;
+    padding: 10px 20px;
+    outline: none;
+    font-weight: 400;
+    border: 1px solid #607d8b;
+    font-size: 16px;
+    letter-spacing: 1px;
+    color: #607d8b;
+    background: transparent;
+    border-radius: 30px;
+}
+section .contentBx .formBx .inputBx input[type="submit"]{
+    background: #1b5c72;
+    color: #fff;
+    outline: none;
+    border: none;
+    font-weight: 500;
+    cursor: pointer;
+    width: 49%;
+}
+
+section .contentBx .formBx .inputBx input[type="button"]{
+    background: #1b5c72;
+    color: #fff;
+    outline: none;
+    border: none;
+    font-weight: 500;
+    cursor: pointer;
+    width: 49%;
+}
+
+section .contentBx .formBx .inputBx input[type="submit"]:hover{
+    background: #458fff;
+}
+
+#warning, #id_error, #password_error, #cpassword_error, #email_error {
+    color: red;
+    text-align: center;
+}

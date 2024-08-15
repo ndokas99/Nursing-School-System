@@ -1,0 +1,58 @@
+{% extends "dashboard.html" %}
+{% block main_block %}
+    <style>
+        th:nth-child(2), td:nth-child(2){
+            text-align: right;
+        }
+        th:nth-child(4), td:nth-child(4){
+            text-align: right;
+        }
+    </style>
+    <div class="formBx">
+        <h4 style="text-align: center">Cashbook as at {{ date }}</h4>
+        <br>
+        <table class="table table-striped table-light">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">Debit</th>
+                    <th scope="col">$</th>
+                    <th scope="col">Credit</th>
+                    <th scope="col">$</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Fees payments</td>
+                    <td>{{ payments }}</td>
+                    <td>Salaries</td>
+                    <td>{{ salaries }}</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td>Fuel</td>
+                    <td>{{ fuel }}</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td>Bills</td>
+                    <td>{{ bills }}</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td>Stationery</td>
+                    <td>{{ stationery }}</td>
+                </tr>
+                <tr class="bg-dark">
+                    <td></td>
+                    <td class="text-light">{{ payments }}</td>
+                    <td></td>
+                    <td class="text-light">{{ total }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+{% endblock %}
+{% block script_block %}{% endblock %}
